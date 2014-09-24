@@ -1,12 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/* version du 25 septembre 2014
+ * Détermine une position initiale au hasard, dans un rectangle donné.
+ * Accélère ou déccélère à la roulette de la souris ou par les touches up et down
+ */
+
 public class SpaceShipController : MonoBehaviour {
 
 	public float acceleration = 0;
+	private Random rand;
 
 	void Start(){
-		//rigidbody.velocity = new Vector3 (0.0f, 0.0f, 0.0f);
+		float xInit, yInit;
+		rand = new Random();
+		xInit = Random.Range (-200, 200);
+		yInit = Random.Range (-100, 100);
+		Debug.Log ("xInit = " + xInit + "yInit = " + yInit);
+		transform.position =  new Vector3 (xInit, yInit, 0.0f);
 	}
 
 	void OnGUI() {

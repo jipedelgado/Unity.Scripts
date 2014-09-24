@@ -32,14 +32,14 @@ public class KeplerScript : MonoBehaviour {
 		rayonVecteurModule = demiGrandAxe - demiFocale;
 		inclinaison = Inclinaison * pi / 180;
 		theta = AngleDepart * pi / 180;
-		rayonVecteur = new Vector3(rayonVecteurModule * Mathf.Cos(theta) , 0, rayonVecteurModule * Mathf.Sin(theta));
+		rayonVecteur = new Vector2(rayonVecteurModule * Mathf.Cos(theta) , rayonVecteurModule * Mathf.Sin(theta));
 		transform.position =  rayonVecteur;	
 	}
 	
 	void Update () {
 			theta += deltaSurface / (rayonVecteurModule * rayonVecteurModule);
 			rayonVecteurModule = param / (1f + excentricite * Mathf.Cos(theta));
-		rayonVecteur = new Vector3(rayonVecteurModule * Mathf.Cos(theta+inclinaison) , 0, rayonVecteurModule * Mathf.Sin(theta+inclinaison));
+		rayonVecteur = new Vector2(rayonVecteurModule * Mathf.Cos(theta+inclinaison) , rayonVecteurModule * Mathf.Sin(theta+inclinaison));
 		transform.position =  centre.transform.position + rayonVecteur;
     
 	}

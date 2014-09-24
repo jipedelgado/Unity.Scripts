@@ -8,14 +8,14 @@ public class AttractionCentrale : MonoBehaviour {
 	public float G = 1.0f;
 
 	private Vector3 vitesseInitiale;
-	private Vector3 R;
-	private Vector3 gamma;
+	private Vector2 R;
+	private Vector2 gamma;
 	private float K;
 	
 	void Start(){
 
 		K = -G * rigidbody.mass * attracteur.rigidbody.mass;
-		rigidbody.AddForce (new Vector3(0.0f, 0.0f, vitesseInitialeZ));
+		rigidbody.AddForce (new Vector3(0.0f, vitesseInitialeZ));
 	}
 
 	void LateUpdate () {
@@ -24,7 +24,7 @@ public class AttractionCentrale : MonoBehaviour {
 		gamma = K * R.normalized / R.sqrMagnitude;
 		rigidbody.AddForce (gamma * Time.deltaTime);
 
-		transform.rotation = Quaternion.FromToRotation(Vector3.forward, rigidbody.velocity);
+		transform.rotation = Quaternion.FromToRotation(Vector2.right, rigidbody.velocity);
 	}
 
 }
